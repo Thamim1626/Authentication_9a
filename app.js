@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+app.use(express.json());
 
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
@@ -11,7 +12,7 @@ const dbPath = path.join(__dirname, "userData.db");
 const initializeServerAndDb = async () => {
   try {
     const db = await open({
-      fliename: dbPath,
+      filename: dbPath,
       driver: sqlite3.Database,
     });
     app.listen(4000, () => {
