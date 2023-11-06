@@ -27,31 +27,9 @@ const initializeServerAndDb = async () => {
 initializeServerAndDb();
 
 //API 1
-app.post("/register/", async (request, response) => {
-  const { username, name, password, gender, location } = request.body;
-  const hashPassword = await bcrypt.hash(password, 10);
-  let newUser = undefined;
-  const newUserQuery = `
-        select * 
-        from user
-        where username = ${username};`;
-  newUser = await db.get(newUserQuery);
-
-  if (newUser !== undefined) {
-    const registerInsertQuery = `
-    INSERT INTO
-    user (username,name, password ,gender, location)
-    values(
-        ${username}
-        ${name}
-        ${hashPassword}
-        ${gender}
-        ${location}
-    )`;
-    const registerInsert = await db.run(registerInsertQuery);
-    response.send("register successed");
-  } else {
-    response.status(400);
-    response.send("user Already exist");
-  }
+app.post("/register", async (request, response) => {
+  const { username, password } = request.body;
+  console.log(request.body);
+  console.log(username);
+  console.log(password);
 });
