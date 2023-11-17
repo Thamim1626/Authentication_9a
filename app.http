@@ -1,5 +1,5 @@
 post http://localhost:4000/register
-
+Content-Type: application/json
 
 {
   "username": "adam_richard",
@@ -7,4 +7,15 @@ post http://localhost:4000/register
   "password": "richard_567",
   "gender": "male",
   "location": "Detroit"
+}
+
+
+###
+POST http://localhost:4000/login/
+content-type: application/json
+
+{
+    "username": "adam_richard",
+    "password": "richard_567"
+
 }
